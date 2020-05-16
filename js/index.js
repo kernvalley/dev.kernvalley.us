@@ -9,7 +9,8 @@ import 'https://cdn.kernvalley.us/components/current-year.js';
 import 'https://cdn.kernvalley.us/components/bacon-ipsum.js';
 import 'https://cdn.kernvalley.us/components/leaflet/map.js';
 import 'https://cdn.kernvalley.us/components/leaflet/marker.js';
-import {$, ready, registerServiceWorker} from 'https://cdn.kernvalley.us/js/std-js/functions.js';
+import 'https://cdn.kernvalley.us/components/gravatar-img.js';
+import { $, ready, registerServiceWorker } from 'https://cdn.kernvalley.us/js/std-js/functions.js';
 
 if (document.documentElement.dataset.hasOwnProperty('serviceWorker')) {
 	registerServiceWorker(document.documentElement.dataset.serviceWorker).catch(console.error);
