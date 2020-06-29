@@ -6,4 +6,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 <!-- markdownlint-disable -->
+### Added
+- Super Linter config
+- Dependabot config 
+- Privacy policy & contact pages
+
+### Changed
+- Numerous dependency updates
+
 <!-- markdownlint-restore -->
