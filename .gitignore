@@ -1,4 +1,5 @@
 # Jekyll stuff
+/.jekyll-cache/
 /_site/*
 !/_site/.gitkeep
 *.sql
@@ -73,3 +74,4 @@ typings/
 # Local Netlify folder
 .netlify
 .buildconfig
+img/icons.svg

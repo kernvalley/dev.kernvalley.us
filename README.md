@@ -1,8 +1,8 @@
 # [Dev.KernValley.US](https://dev.kernvalley.us)
 Specializing in websites for small businesses in rural communities
 
+[![Node CI](https://github.com/kernvalley/dev.kernvalley.us/workflows/Node%20CI/badge.svg)](https://github.com/kernvalley/dev.kernvalley.us/actions)
 [![Netlify Status](https://api.netlify.com/api/v1/badges/56c88c0a-8a05-41d8-a7a2-48a868f92f2f/deploy-status)](https://app.netlify.com/sites/angry-leavitt-d91f7f/deploys)
-[![GitHub Actions Status](https://github.com/kernvalley/dev.kernvalley.us/workflows/Node%20CI/badge.svg)](https://github.com/kernvalley/dev.kernvalley.us/actions)
 
 [![GitHub license](https://img.shields.io/github/license/kernvalley/dev.kernvalley.us.svg)](https://github.com/kernvalley/dev.kernvalley.us/blob/master/LICENSE)
 [![GitHub issues](https://img.shields.io/github/issues/kernvalley/dev.kernvalley.us.svg)](https://github.com/kernvalley/dev.kernvalley.us/issues)
@@ -14,7 +14,7 @@ Specializing in websites for small businesses in rural communities
 ![GitHub forks](https://img.shields.io/github/forks/kernvalley/dev.kernvalley.us.svg?style=social)
 ![GitHub stars](https://img.shields.io/github/stars/kernvalley/dev.kernvalley.us.svg?style=social)
 [![Twitter Follow](https://img.shields.io/twitter/follow/kern_valley.svg?style=social)](https://twitter.com/kern_valley)
-- - - 
+- - -
 
 - [Code of Conduct](./.github/CODE_OF_CONDUCT.md)
 - [Contributing](./.github/CONTRIBUTING.md)
