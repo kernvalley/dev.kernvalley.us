@@ -8,10 +8,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 <!-- markdownlint-disable -->
 ### Added
 - Super Linter config
-- Dependabot config 
+- Dependabot config
 - Privacy policy & contact pages
 
 ### Changed
 - Numerous dependency updates
+- Use Docker image for Super Linter
+- Check for GitHub Actions updates weekly instead of daily
 
 <!-- markdownlint-restore -->
