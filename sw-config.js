@@ -2,29 +2,36 @@
 layout: null
 ---
 'use strict';
-/*eslint no-unused-vars: 0*/
+/* eslint-env serviceworker */
+/* eslint no-unused-vars: 0 */
+
 const config = {
-	version: '{{ site.app.version | default: site.version }}',
+	version: '{{ site.data..app.version | default: site.version }}',
 	fresh: [
 		/* Root document */
 		'{{ site.pages | where: "pinned", true | map: "url" | join: "', '" }}',
 		'{{ site.posts | where: "pinned", true | map: "url" | join: "', '" }}',
 	].map(path => new URL(path, location.origin).href),
 	stale: [
-		/* Other HTML */
+		/* Main assets */
 		'/css/index.min.css',
 		'/js/index.min.js',
 		'/img/icons.svg',
-		'https://cdn.kernvalley.us/components/toast-message.html',
-		'https://cdn.kernvalley.us/components/leaflet/map.html',
-		'https://cdn.kernvalley.us/components/share-to-button/share-to-button.html',
-		'https://cdn.kernvalley.us/components/slide-show/slide-show.html',
-		'https://cdn.kernvalley.us/components/github/user.html',
 
-		/* JS, `customElements`, etc. */
+		/* Other JS */
 		'https://polyfill.io/v3/polyfill.min.js',
-		'https://unpkg.com/@webcomponents/custom-elements@1.4.1/custom-elements.min.js',
 
+		/* `customElements`. */
+		'https://cdn.kernvalley.us/components/toast-message.html',
+		'https://cdn.kernvalley.us/components/toast-message.css',
+		'https://cdn.kernvalley.us/components/leaflet/map.html',
+		'https://cdn.kernvalley.us/components/leaflet/map.css',
+		'https://cdn.kernvalley.us/components/share-to-button/share-to-button.html',
+		'https://cdn.kernvalley.us/components/share-to-button/share-to-button.css',
+		'https://cdn.kernvalley.us/components/slide-show/slide-show.html',
+		'https://cdn.kernvalley.us/components/slide-show/slide-show.css',
+		'https://cdn.kernvalley.us/components/github/user.html',
+		'https://cdn.kernvalley.us/components/github/user.css',
 
 		/* CSS */
 		'https://unpkg.com/leaflet@1.6.0/dist/leaflet.css',

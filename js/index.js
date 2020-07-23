@@ -10,11 +10,7 @@ import 'https://cdn.kernvalley.us/components/bacon-ipsum.js';
 import 'https://cdn.kernvalley.us/components/leaflet/map.js';
 import 'https://cdn.kernvalley.us/components/leaflet/marker.js';
 import 'https://cdn.kernvalley.us/components/gravatar-img.js';
-import { $, ready, registerServiceWorker } from 'https://cdn.kernvalley.us/js/std-js/functions.js';
-
-if (document.documentElement.dataset.hasOwnProperty('serviceWorker')) {
-	registerServiceWorker(document.documentElement.dataset.serviceWorker).catch(console.error);
-}
+import { $, ready } from 'https://cdn.kernvalley.us/js/std-js/functions.js';
 
 document.documentElement.classList.replace('no-js', 'js');
 document.documentElement.classList.toggle('no-dialog', document.createElement('dialog') instanceof HTMLUnknownElement);
