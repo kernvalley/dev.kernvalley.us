@@ -6,7 +6,7 @@ layout: null
 /* eslint no-unused-vars: 0 */
 
 const config = {
-	version: '{{ site.data..app.version | default: site.version }}',
+	version: '{{ site.data.app.version | default: site.version }}',
 	fresh: [
 		/* Root document */
 		'{{ site.pages | where: "pinned", true | map: "url" | join: "', '" }}',
@@ -43,6 +43,7 @@ const config = {
 		'https://cdn.kernvalley.us/img/adwaita-icons/actions/mail-send.svg',
 		'https://cdn.kernvalley.us/img/adwaita-icons/actions/mark-location.svg',
 		'https://cdn.kernvalley.us/img/octicons/file-media.svg',
+		'https://cdn.kernvalley.us/img/keep-kern-clean.svg',
 
 		/* Social Icons for Web Share API shim */
 		'https://cdn.kernvalley.us/img/octicons/mail.svg',
