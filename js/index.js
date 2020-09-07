@@ -70,12 +70,6 @@ Promise.all([
 	ready(),
 	loadScript('https://cdn.polyfill.io/v3/polyfill.min.js'),
 ]).then(() => {
-
-	if (location.pathname.startsWith('/contact')) {
-		$('#contact-form').submit(submitHandler);
-	}
-
-
 	$('[data-scroll-to]').click(event => {
 		const target = document.querySelector(event.target.closest('[data-scroll-to]').dataset.scrollTo);
 		target.scrollIntoView({
