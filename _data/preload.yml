@@ -25,13 +25,13 @@
   type: text/css
   crossOrigin: anonymous
   referrerPolicy: no-referrer
-- href: "https://cdn.kernvalley.us/components/share-to-button/share-to-button.html"
-  as: fetch
-  type: text/html
-  crossOrigin: anonymous
-  referrerPolicy: no-referrer
-- href: "https://cdn.kernvalley.us/components/share-to-button/share-to-button.css"
-  as: style
-  type: text/css
-  crossOrigin: anonymous
-  referrerPolicy: no-referrer
+# - href: "https://cdn.kernvalley.us/components/share-to-button/share-to-button.html"
+#   as: fetch
+#   type: text/html
+#   crossOrigin: anonymous
+#   referrerPolicy: no-referrer
+# - href: "https://cdn.kernvalley.us/components/share-to-button/share-to-button.css"
+#   as: style
+#   type: text/css
+#   crossOrigin: anonymous
+#   referrerPolicy: no-referrer
