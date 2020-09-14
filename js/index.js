@@ -14,59 +14,43 @@ import { $, ready } from 'https://cdn.kernvalley.us/js/std-js/functions.js';
 import { loadScript } from 'https://cdn.kernvalley.us/js/std-js/loader.js';
 import { importGa } from 'https://cdn.kernvalley.us/js/std-js/google-analytics.js';
 import { GA } from './consts.js';
-
-$(':root').css({'--viewport-height': `${window.innerHeight}px`});
-
-$(window).debounce('resize', () => $(':root').css({'--viewport-height': `${window.innerHeight}px`}));
-
-$(window).on('scroll', () => {
-	requestAnimationFrame(() => {
-		$('#header').css({
-			'background-position-y': `${-0.5 * scrollY}px`,
-		});
-	});
-}, { passive: true });
+import { outbound, madeCall } from './analytics.js';
 
 document.documentElement.classList.replace('no-js', 'js');
 document.documentElement.classList.toggle('no-dialog', document.createElement('dialog') instanceof HTMLUnknownElement);
 document.documentElement.classList.toggle('no-details', document.createElement('details') instanceof HTMLUnknownElement);
 
-if (typeof GA === 'string' && GA.length !== 0) {
-	importGa(GA).then(async () => {
-		/* global ga */
-		ga('create', GA, 'auto');
-		ga('set', 'transport', 'beacon');
-		ga('send', 'pageview');
+$(':root').css({'--viewport-height': `${window.innerHeight}px`});
 
+requestIdleCallback(() => {
 
-		function outbound() {
-			ga('send', {
-				hitType: 'event',
-				eventCategory: 'outbound',
-				eventAction: 'click',
-				eventLabel: this.href,
-				transport: 'beacon',
+	$(window).debounce('resize', () => $(':root').css({'--viewport-height': `${window.innerHeight}px`}));
+
+	$(window).on('scroll', () => {
+		requestAnimationFrame(() => {
+			$('#header').css({
+				'background-position-y': `${-0.5 * scrollY}px`,
 			});
-		}
+		});
+	}, { passive: true });
 
-		function madeCall() {
-			ga('send', {
-				hitType: 'event',
-				eventCategory: 'call',
-				eventLabel: 'Called',
-				transport: 'beacon',
-			});
-		}
+	if (typeof GA === 'string' && GA.length !== 0) {
+		importGa(GA).then(async () => {
+			/* global ga */
+			ga('create', GA, 'auto');
+			ga('set', 'transport', 'beacon');
+			ga('send', 'pageview');
 
-		await ready();
+			await ready();
 
-		$('a[rel~="external"]').click(outbound, { passive: true, capture: true });
-		$('a[href^="tel:"]').click(madeCall, { passive: true, capture: true });
+			$('a[rel~="external"]').click(outbound, { passive: true, capture: true });
+			$('a[href^="tel:"]').click(madeCall, { passive: true, capture: true });
 
-	});
-}
+		});
+	}
+});
 
-Promise.all([
+Promise.allSettled([
 	ready(),
 	loadScript('https://cdn.polyfill.io/v3/polyfill.min.js'),
 ]).then(() => {
