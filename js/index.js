@@ -12,9 +12,8 @@ import 'https://cdn.kernvalley.us/components/leaflet/marker.js';
 import 'https://cdn.kernvalley.us/components/pwa/install.js';
 import { $, ready } from 'https://cdn.kernvalley.us/js/std-js/functions.js';
 import { loadScript } from 'https://cdn.kernvalley.us/js/std-js/loader.js';
-import { importGa } from 'https://cdn.kernvalley.us/js/std-js/google-analytics.js';
+import { importGa, externalHandler, telHandler, mailtoHandler } from 'https://cdn.kernvalley.us/js/std-js/google-analytics.js';
 import { GA } from './consts.js';
-import { outbound, madeCall } from './analytics.js';
 
 document.documentElement.classList.replace('no-js', 'js');
 document.documentElement.classList.toggle('no-dialog', document.createElement('dialog') instanceof HTMLUnknownElement);
@@ -23,7 +22,6 @@ document.documentElement.classList.toggle('no-details', document.createElement('
 $(':root').css({'--viewport-height': `${window.innerHeight}px`});
 
 requestIdleCallback(() => {
-
 	$(window).debounce('resize', () => $(':root').css({'--viewport-height': `${window.innerHeight}px`}));
 
 	$(window).on('scroll', () => {
@@ -35,17 +33,16 @@ requestIdleCallback(() => {
 	}, { passive: true });
 
 	if (typeof GA === 'string' && GA.length !== 0) {
-		importGa(GA).then(async () => {
-			/* global ga */
+		importGa(GA).then(async ({ ga }) => {
 			ga('create', GA, 'auto');
 			ga('set', 'transport', 'beacon');
 			ga('send', 'pageview');
 
 			await ready();
 
-			$('a[rel~="external"]').click(outbound, { passive: true, capture: true });
-			$('a[href^="tel:"]').click(madeCall, { passive: true, capture: true });
-
+			$('a[rel~="external"]').click(externalHandler, { passive: true, capture: true });
+			$('a[href^="tel:"]').click(telHandler, { passive: true, capture: true });
+			$('a[href^="mailto:"]').click(mailtoHandler, { passive: true, capture: true });
 		});
 	}
 });
