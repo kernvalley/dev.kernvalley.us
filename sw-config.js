@@ -19,7 +19,6 @@ const config = {
 		'/img/icons.svg',
 
 		/* Other JS */
-		'https://polyfill.io/v3/polyfill.min.js',
 
 		/* `customElements`. */
 		'https://cdn.kernvalley.us/components/toast-message.html',
@@ -34,7 +33,7 @@ const config = {
 		'https://cdn.kernvalley.us/components/github/user.css',
 
 		/* CSS */
-		'https://unpkg.com/leaflet@1.6.0/dist/leaflet.css',
+		'https://unpkg.com/leaflet@1.7.1/dist/leaflet.css',
 
 		/* Images & Icons */
 		'/img/apple-touch-icon.png',

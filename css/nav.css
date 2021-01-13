@@ -1,5 +1,21 @@
 #nav {
 	padding: 0.6em;
 	font-size: 1.2em;
-	justify-content: space-around;
+	grid-area: nav;
+	max-width: 100vw;
+	gap: 12px;
+}
+
+#nav > .btn {
+	background-color: transparent;
+	color: inherit;
+	border: none;
+}
+
+#install-btn, #fs-button, #locate-btn {
+	justify-self: flex-end;
+}
+
+#install-btn > svg {
+	margin-bottom: 10px;
 }
