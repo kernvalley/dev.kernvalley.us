@@ -61,7 +61,7 @@ Promise.allSettled([
 	customElements.whenDefined('install-prompt').then(() => {
 		const InstallPrompt = customElements.get('install-prompt');
 		const install = document.getElementById('install-btn');
-		btn.addEventListner('click', () => new InstallPrompt().show());
+		install.addEventListner('click', () => new InstallPrompt().show());
 		install.hidden = false;
 	})
 });
