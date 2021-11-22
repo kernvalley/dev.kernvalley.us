@@ -63,5 +63,5 @@ Promise.allSettled([
 		const install = document.getElementById('install-btn');
 		install.addEventListner('click', () => new InstallPrompt().show());
 		install.hidden = false;
-	})
+	});
 });
