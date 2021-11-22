@@ -10,7 +10,7 @@ import 'https://cdn.kernvalley.us/components/bacon-ipsum.js';
 import 'https://cdn.kernvalley.us/components/app/list-button.js';
 import 'https://cdn.kernvalley.us/components/leaflet/map.js';
 import 'https://cdn.kernvalley.us/components/leaflet/marker.js';
-import 'https://cdn.kernvalley.us/components/pwa/install.js';
+import 'https://cdn.kernvalley.us/components/install/prompt.js';
 import { init } from 'https://cdn.kernvalley.us/js/std-js/data-handlers.js';
 import { $, ready } from 'https://cdn.kernvalley.us/js/std-js/functions.js';
 import { importGa, externalHandler, telHandler, mailtoHandler } from 'https://cdn.kernvalley.us/js/std-js/google-analytics.js';
@@ -56,5 +56,12 @@ requestIdleCallback(() => {
 Promise.allSettled([
 	ready(),
 ]).then(() => {
-	init().catch(console.error);
+	init();
+
+	customElements.whenDefined('install-prompt').then(() => {
+		const InstallPrompt = customElements.get('install-prompt');
+		const install = document.getElementById('install-btn');
+		btn.addEventListner('click', () => new InstallPrompt().show());
+		install.hidden = false;
+	})
 });
