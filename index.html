@@ -2,14 +2,15 @@
 layout: default
 title: Home
 pinned: true
+description: A GitHub repository for easily creating fast, modern, PWA compatible websites
 prerender:
 - href: /posts/2019/10/29/test/
 ---
 <section class="pagination">
 	<div class="grid grid-gallery">
-		{% for post in paginator.posts %}
+		{% for post in collections.posts %}
 			<div class="article-preview card shadow-dark">
-				{% include articles/post-preview.html post=post %}
+				{% include "11ty-articles/post-preview.html" post: post %}
 			</div>
 		{% endfor %}
 	</div>
@@ -17,12 +18,12 @@ prerender:
 		<footer class="paginate-nav">
 			{% if paginator.previous_page %}
 				<a href="{{ paginator.previous_page_path  }}" rel="prev" role="button" title="Previous page">
-					{% include common/icon.html icon='prev' %}
+					{% include "11ty-common/icon.html" icon: 'prev' %}
 				</a>
 			{% endif %}
 			{% if paginator.next_page %}
 				<a href="{{ paginator.next_page_path }}" role="button" rel="next" title="Next page">
-					{% include common/icon.html icon='next' %}
+					{% include "11ty-common/icon.html" icon: 'next' %}
 				</a>
 			{% endif %}
 		</footer>

@@ -1,67 +1,61 @@
-import 'https://cdn.kernvalley.us/js/std-js/deprefixer.js';
-import 'https://cdn.kernvalley.us/js/std-js/shims.js';
-import 'https://cdn.kernvalley.us/js/std-js/theme-cookie.js';
-import 'https://cdn.kernvalley.us/components/share-button.js';
-import 'https://cdn.kernvalley.us/components/share-to-button/share-to-button.js';
-import 'https://cdn.kernvalley.us/components/slide-show/slide-show.js';
-import 'https://cdn.kernvalley.us/components/github/user.js';
-import 'https://cdn.kernvalley.us/components/current-year.js';
-import 'https://cdn.kernvalley.us/components/bacon-ipsum.js';
-import 'https://cdn.kernvalley.us/components/app/list-button.js';
-import 'https://cdn.kernvalley.us/components/leaflet/map.js';
-import 'https://cdn.kernvalley.us/components/leaflet/marker.js';
-import 'https://cdn.kernvalley.us/components/install/prompt.js';
-import { init } from 'https://cdn.kernvalley.us/js/std-js/data-handlers.js';
-import { $, ready } from 'https://cdn.kernvalley.us/js/std-js/functions.js';
-import { importGa, externalHandler, telHandler, mailtoHandler } from 'https://cdn.kernvalley.us/js/std-js/google-analytics.js';
+import '@shgysk8zer0/kazoo/theme-cookie.js';
+import { getGooglePolicy } from '@shgysk8zer0/kazoo/trust-policies.js';
+import { ready, toggleClass, css, on } from '@shgysk8zer0/kazoo/dom.js';
+import { debounce } from '@shgysk8zer0/kazoo/events.js';
+import { init } from '@shgysk8zer0/kazoo/data-handlers.js';
+import { importGa, externalHandler, telHandler, mailtoHandler } from '@shgysk8zer0/kazoo/google-analytics.js';
+import { submitHandler } from './contact-demo.js';
 import { GA } from './consts.js';
+import './components.js';
 
-$(document.documentElement).toggleClass({
+if (! CSS.supports('height', '1dvh')) {
+	css([document.documentElement], { '--viewport-height': `${window.innerHeight}px`});
+
+	requestIdleCallback(() => {
+		on([window], {
+			resize: debounce(() => css([document.documentElement], { '--viewport-height': `${window.innerHeight}px`})),
+			scroll: () => {
+				requestAnimationFrame(() => {
+					css('#header', { 'background-position-y': `${-0.5 * scrollY}px` });
+				});
+			}
+		}, { passive: true });
+	});
+}
+
+toggleClass([document.documentElement], {
 	'no-dialog': document.createElement('dialog') instanceof HTMLUnknownElement,
 	'no-details': document.createElement('details') instanceof HTMLUnknownElement,
 	'js': true,
 	'no-js': false,
 });
 
-$(':root').css({'--viewport-height': `${window.innerHeight}px`});
-
-requestIdleCallback(() => {
-	$(window).debounce('resize', () => $(':root').css({'--viewport-height': `${window.innerHeight}px`}));
-
-	$(window).on('scroll', () => {
-		requestAnimationFrame(() => {
-			$('#header').css({
-				'background-position-y': `${-0.5 * scrollY}px`,
-			});
-		});
-	}, { passive: true });
-
-	if (typeof GA === 'string' && GA.length !== 0) {
-		importGa(GA).then(async ({ ga }) => {
-			if (ga instanceof Function) {
+if (typeof GA === 'string' && GA.length !== 0) {
+	scheduler.postTask(() => {
+		importGa(GA, {}, { policy: getGooglePolicy() }).then(async ({ ga, hasGa }) => {
+			if (hasGa()) {
 				ga('create', GA, 'auto');
 				ga('set', 'transport', 'beacon');
 				ga('send', 'pageview');
 
-				await ready();
-
-				$('a[rel~="external"]').click(externalHandler, { passive: true, capture: true });
-				$('a[href^="tel:"]').click(telHandler, { passive: true, capture: true });
-				$('a[href^="mailto:"]').click(mailtoHandler, { passive: true, capture: true });
+				on('a[rel~="external"]', ['click'], externalHandler, { passive: true, capture: true });
+				on('a[href^="tel:"]', ['click'], telHandler, { passive: true, capture: true });
+				on('a[href^="mailto:"]', ['click'], mailtoHandler, { passive: true, capture: true });
 			}
 		});
-	}
-});
+	}, { priority: 'background' });
+}
 
-Promise.allSettled([
+Promise.all([
+	customElements.whenDefined('install-prompt'),
 	ready(),
-]).then(() => {
+]).then(([HTMLInstallPromptElement]) => {
 	init();
 
-	customElements.whenDefined('install-prompt').then(() => {
-		const InstallPrompt = customElements.get('install-prompt');
-		const install = document.getElementById('install-btn');
-		install.addEventListner('click', () => new InstallPrompt().show());
-		install.hidden = false;
-	});
+	if (location.pathname.startsWith('/contact')) {
+		on('#contact-form', ['cubmit'], submitHandler);
+	}
+
+	on('#install-btn', ['click'], () => new HTMLInstallPromptElement().show())
+		.forEach(el => el.hidden = false);
 });
