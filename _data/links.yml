@@ -2,35 +2,25 @@ nav:
   - label: Home
     icon: home
     href: /
-  - label: Events
-    icon: calendar
-    href: "https://events.kernvalley.us"
 footer:
   - label: KernValley.US
-    icon: web-browser
     href: https://kernvalley.us
+    icon: web-browser
     rel:
       - noopener
+      - nofererrer
       - external
-      - noreferrer
-  - label: Privacy
-    icon: eye
-    href: https://kernvalley.us/privacy/
-    rel:
-      - noopener
-      - external
-      - noreferrer
   - label: Contact
+    href: https://contact.kernvalley.us
     icon: address-book
-    href: /contact
     rel:
       - noopener
+      - nofererrer
       - external
-      - noreferrer
   - label: All Apps
-    icon: apps
     href: https://apps.kernvalley.us
+    icon: apps
     rel:
-      - noreferrer
       - noopener
+      - nofererrer
       - external
