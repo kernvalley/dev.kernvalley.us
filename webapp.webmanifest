@@ -1,4 +1,4 @@
 ---
 layout: null
 ---
-{% include common/webapp.webmanifest app=site.data.app %}
+{% include "11ty-common/webapp.webmanifest" app: site.data.app %}

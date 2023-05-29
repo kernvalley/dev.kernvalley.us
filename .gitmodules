@@ -7,9 +7,12 @@
 [submodule "img/logos"]
 	path = img/logos
 	url = https://github.com/shgysk8zer0/logos.git
-[submodule "_includes/common"]
-	path = _includes/common
-	url = https://github.com/shgysk8zer0/jekyll-common.git
-[submodule "_includes/articles"]
-	path = _includes/articles
-	url = https://github.com/shgysk8zer0/jekyll-articles.git
+[submodule "_includes/11ty-common"]
+	path = _includes/11ty-common
+	url = https://github.com/shgysk8zer0/11ty-common.git
+[submodule "_includes/11ty-articles"]
+	path = _includes/11ty-articles
+	url = https://github.com/shgysk8zer0/11ty-articles.git
+[submodule "_layouts/11ty-layouts"]
+	path = _layouts/11ty-layouts
+	url = https://github.com/shgysk8zer0/11ty-layouts.git
