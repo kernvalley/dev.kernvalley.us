@@ -1,7 +1,6 @@
 /* eslint-env node */
 const { load } = require('js-yaml');
 const filters = require('@shgysk8zer0/11ty-filters');
-// const filters = require('./11ty-filters.cjs');
 
 module.exports = function(eleventyConfig) {
 	Object.entries(filters).forEach(([filter, cb]) => eleventyConfig.addFilter(filter, cb));
