@@ -69,7 +69,6 @@
     "version:bump:major": "npm version --no-git-tag-version major"
   },
   "dependencies": {
-    "@shgysk8zer0/11ty-filters": "^0.0.6",
-    "@shgysk8zer0/11ty-netlify": "^1.0.6"
+    "@shgysk8zer0/11ty-netlify": "^1.0.7"
   }
 }
