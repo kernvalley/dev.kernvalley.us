@@ -2,6 +2,12 @@ nav:
   - label: Home
     icon: home
     href: /
+  - label: Security
+    href: /security/
+  - label: SEO
+    href: /seo/
+  - label: Performance
+    href: /performance/
 footer:
   - label: KernValley.US
     href: https://kernvalley.us

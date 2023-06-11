@@ -34,7 +34,7 @@
   "bugs": {
     "url": "https://github.com/kernvalley/dev.kernvalley.us/issues"
   },
-  "homepage": "https://github.com/kernvalley/dev.kernvalley.us",
+  "homepage": "https://dev.kernvalley.us",
   "scripts": {
     "test": "npm run lint",
     "start": "npm run netlify",
@@ -69,6 +69,6 @@
     "version:bump:major": "npm version --no-git-tag-version major"
   },
   "dependencies": {
-    "@shgysk8zer0/11ty-netlify": "^1.0.2"
+    "@shgysk8zer0/11ty-netlify": "^1.0.7"
   }
 }
