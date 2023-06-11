@@ -1,3 +1,7 @@
 - href: /css/index.css
   media: all
   referrerPolicy: no-referrer
+- href: https://unpkg.com/@highlightjs/cdn-assets@11.8.0/styles/default.min.css
+  media: all
+  referrerPolicy: no-referrer
+  crossOrigin: anonymous

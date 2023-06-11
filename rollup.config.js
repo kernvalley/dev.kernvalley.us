@@ -1,25 +1,15 @@
 /* eslint-env node */
-import terser from '@rollup/plugin-terser';
-import { rollupImport } from '@shgysk8zer0/rollup-import';
+import { getConfig } from '@shgysk8zer0/js-utils/rollup';
+import { rollupImport, rollupImportMeta } from '@shgysk8zer0/rollup-import';
+import { importmap } from '@shgysk8zer0/importmap';
+import pkg from './package.json' assert { type: 'json' };
 
-export default {
-	input: 'js/index.js',
-	external: [],
-	onwarn: (warning) => {
-		if (warning.code === 'MISSING_GLOBAL_NAME') {
-			throw new Error(warning.message);
-		} else if (warning.code !== 'CIRCULAR_DEPENDENCY') {
-			console.warn(`(!) ${warning.message}`);
-		}
-	},
-	output: {
-		file: 'js/index.min.js',
-		format: 'iife',
-		sourcemap: true,
-		globals: {},
-	},
+export default getConfig('./js/index.js', {
 	plugins: [
-		rollupImport(['_data/importmap.yml']),
-		terser(),
+		rollupImport(importmap),
+		rollupImportMeta({ baseURL: pkg.homepage }),
 	],
-};
+	format: 'iife',
+	minify: true,
+	sourcemap: true,
+});

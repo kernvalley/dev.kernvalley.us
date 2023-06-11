@@ -1,0 +1,5 @@
+{
+  "layout": "document.html",
+  "tags": ["docs"],
+  "permalink": "/docs/{{ title | slugify }}/"
+}
