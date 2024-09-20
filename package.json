@@ -70,5 +70,8 @@
   },
   "dependencies": {
     "@shgysk8zer0/11ty-netlify": "^1.1.22"
+  },
+  "devDependencies": {
+    "@shgysk8zer0/eslint-config": "^1.0.1"
   }
 }
