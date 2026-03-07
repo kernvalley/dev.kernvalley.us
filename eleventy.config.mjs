@@ -10,9 +10,9 @@ import { Liquid } from 'liquidjs';
 
 const importmap = JSON.parse(JSON.stringify(new Importmap()));
 
-if (process.env.ELEVENTY_SOURCE === 'cli'  && ! ('FIREBASE_CERT' in process.env)) {
-	config();
-}
+// if (process.env.ELEVENTY_SOURCE === 'cli'  && ! ('FIREBASE_CERT' in process.env)) {
+// 	config();
+// }
 
 async function getCollection(name, db) {
 	const snapshot = await db.collection(name).get();
