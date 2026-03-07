@@ -14,10 +14,10 @@ const importmap = JSON.parse(JSON.stringify(new Importmap()));
 // 	config();
 // }
 
-async function getCollection(name, db) {
-	const snapshot = await db.collection(name).get();
-	return snapshot.docs.map(doc => doc.data());
-}
+// async function getCollection(name, db) {
+// 	const snapshot = await db.collection(name).get();
+// 	return snapshot.docs.map(doc => doc.data());
+// }
 
 /**
  *
@@ -85,8 +85,8 @@ export default function(eleventyConfig) {
 
 	// Set global data/variables
 	// {{ environment }} -> 'production' | 'development'
-	eleventyConfig.addGlobalData('firebase-orgs', getCollection('organizations', db));
-	eleventyConfig.addGlobalData('partners', getCollection('partners', db));
+	// eleventyConfig.addGlobalData('firebase-orgs', getCollection('organizations', db));
+	// eleventyConfig.addGlobalData('partners', getCollection('partners', db));
 	eleventyConfig.addGlobalData('referrer', 'origin-when-cross-origin');
 	eleventyConfig.addGlobalData('importmap', importmap);
 	eleventyConfig.addGlobalData('environment',
