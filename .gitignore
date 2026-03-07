@@ -1,5 +1,6 @@
 _site/*
 *.map
+*.bak
 *.min.*
 !_site/.gitkeep
 # Logs
