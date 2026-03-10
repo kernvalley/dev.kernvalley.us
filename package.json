@@ -45,7 +45,7 @@
     "git:submodules": "if [ -f '.gitmodules' ]; then git submodule update --init --recursive; fi",
     "lint": "npm run lint:js && npm run lint:css && npm run lint:html",
     "lint:js": "if [ -f eslint.config.js ]; then eslint . --ext .js,.cjs,.mjs; fi",
-    "lint:css": "if [ -f .stylelintrc.json ]; then stylelint './**.css'; fi",
+    "lint:css": "if [ -f stylelint.config.js ]; then stylelint './**.css'; fi",
     "lint:html": "if [ -f .htmlhintrc ]; then htmlhint ${npm_package_config_dir_html}; fi",
     "fix:css": "stylelint './**.css' --fix",
     "fix:js": "eslint . --fix --ext .js,.cjs,.mjs",
@@ -69,9 +69,6 @@
     "version:bump:major": "npm version --no-git-tag-version major && npm run create:lock"
   },
   "dependencies": {
-    "@shgysk8zer0/11ty-netlify": "^1.1.31"
-  },
-  "devDependencies": {
-    "@shgysk8zer0/eslint-config": "^1.0.7"
+    "@shgysk8zer0/11ty-netlify": "^1.1.32"
   }
 }
